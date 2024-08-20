@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 import openai
 
-from flask import Flask
-
 # Initialize the Flask application
 app = Flask(__name__)
+
+# Set your OpenAI API key
+openai.api_key = 'sk-EE2UucEwgWnrEtCluau-LDgh7kVmhq49z1aRQii2umT3BlbkFJd3vr9SVEkkkbDngFzepCsMWlf7pgD6BRTArIQM0DEA'
 
 # Define the routes
 @app.route('/')
@@ -18,15 +19,6 @@ def about():
 @app.route('/contact')
 def contact():
     return "This is the contact page."
-
-# The main entry point of the program
-if __name__ == '__main__':
-    app.run()
-
-app = Flask(__name__)
-
-# Set your OpenAI API key
-openai.api_key = 'sk-EE2UucEwgWnrEtCluau-LDgh7kVmhq49z1aRQii2umT3BlbkFJd3vr9SVEkkkbDngFzepCsMWlf7pgD6BRTArIQM0DEA'
 
 @app.route('/vector_search', methods=['POST'])
 def vector_search():
@@ -56,15 +48,6 @@ def search_vector_store(embedding):
     )
     return [result['metadata']['text'] for result in search_response['results']]
 
+# The main entry point of the program
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Hello, world! Your Flask app is running."
-
-if __name__ == '__main__':
-    app.run()
