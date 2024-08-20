@@ -1,6 +1,28 @@
 from flask import Flask, request, jsonify
 import openai
 
+from flask import Flask
+
+# Initialize the Flask application
+app = Flask(__name__)
+
+# Define the routes
+@app.route('/')
+def home():
+    return "Hello, world! Your Flask app is running."
+
+@app.route('/about')
+def about():
+    return "This is the about page."
+
+@app.route('/contact')
+def contact():
+    return "This is the contact page."
+
+# The main entry point of the program
+if __name__ == '__main__':
+    app.run()
+
 app = Flask(__name__)
 
 # Set your OpenAI API key
